@@ -40,7 +40,5 @@ public class SelenideWikiTest {
         // Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $$("[data-filterable-for=wiki-pages-filter] li").findBy(text("SoftAssertions")).click();
         $(".markdown-body").shouldHave(text("Using JUnit5 extend test class:"));
-
-
     }
 }
