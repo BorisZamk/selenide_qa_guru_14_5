@@ -15,12 +15,13 @@ public class SolutionsCompareHoverTest {
     static void configure() {
 //        Configuration.baseUrl = "https://github.com/";
 //        Configuration.browserSize = "1920x1080";
+//        Configuration.holdBrowserOpen = true;
         Configuration.headless = true;
     }
 
     @Test
     void isCompareFeaturesPageOpen() {
-//        Configuration.holdBrowserOpen = true;
+
 
         // Откройте страницу github.com
         open("https://github.com/");

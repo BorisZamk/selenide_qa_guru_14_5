@@ -13,18 +13,18 @@ public class DragNDropTest {
     static void configure() {
         Configuration.baseUrl = " https://the-internet.herokuapp.com";
 //        Configuration.browserSize = "1920x1080";
+//        Configuration.holdBrowserOpen = true;
         Configuration.headless = true;
     }
 
     @Test
-    void ActionDrugNDrop() {
-//        Configuration.holdBrowserOpen = true;
+    void actionDrugNDrop() {
 
         // Открываем страницу /drag_and_drop
         open("/drag_and_drop");
 
         // Сохраняем состояние текста квадратов до начала теста
-        String square_a_state = $("#column-a").text();
+        String squareA = $("#column-a").text();
 
         // Перносим элемент
         // К сожалению, ни один из 3х вариантов не работает у меня почему то
@@ -33,21 +33,21 @@ public class DragNDropTest {
         actions().moveToElement($("#column-a")).clickAndHold().moveToElement($("#column-b")).release().perform();
 
         // Проверяем, что квадрат поменялся местами
-        $("#column-a").shouldNotHave(Condition.exactTextCaseSensitive(square_a_state));
+        $("#column-a").shouldNotHave(Condition.exactTextCaseSensitive(squareA));
     }
 
     @Test
-    void DrugNDrop() {
+    void drugNDrop() {
         // Открываем страницу /drag_and_drop
         open("/drag_and_drop");
 
         // Сохраняем состояние текста квадратов до начала теста
-        String square_a_state = $("#column-a").text();
+        String squareB = $("#column-b").text();
 
         // Перносим элемент
         $("#column-a").dragAndDropTo("#column-b");
 
         // Проверяем, что квадрат поменялся местами
-        $("#column-a").shouldNotHave(Condition.exactTextCaseSensitive(square_a_state));
+        $("#column-a").shouldHave(Condition.exactTextCaseSensitive(squareB));
     }
 }
